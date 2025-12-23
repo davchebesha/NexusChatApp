@@ -205,3 +205,133 @@
 .draggable-sidebar.right-sidebar.open {
   animation: slideInRight 0.3s ease-out;
 }
+/* Collapsed Sidebar Styles */
+.draggable-sidebar.collapsed {
+  min-width: 60px;
+}
+
+.draggable-sidebar.collapsed .sidebar-content {
+  padding: 0;
+}
+
+.draggable-sidebar.collapsed .sidebar-content[data-collapsed="true"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+}
+
+/* Enhanced Resizer for Better UX */
+.sidebar-resizer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  cursor: col-resize;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  transition: all 0.2s ease;
+}
+
+.left-resizer {
+  right: -6px;
+}
+
+.right-resizer {
+  left: -6px;
+}
+
+.sidebar-resizer:hover {
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+}
+
+.sidebar-resizer.resizing {
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.2), transparent);
+}
+
+.resizer-handle {
+  width: 4px;
+  height: 60px;
+  background: var(--color-border, #e1e5e9);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-resizer:hover .resizer-handle,
+.sidebar-resizer.resizing .resizer-handle {
+  opacity: 1;
+  background: #10b981;
+  transform: scaleY(1.1);
+}
+
+.resizer-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+
+.resizer-dots span {
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.sidebar-resizer:hover .resizer-dots span {
+  transform: scale(1.2);
+}
+
+/* Enhanced Resize Indicator */
+.resize-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 1002;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Smooth transitions for width changes */
+.draggable-sidebar:not(.dragging) {
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Improved mobile experience */
+@media (max-width: 768px) {
+  .sidebar-resizer {
+    width: 20px;
+  }
+  
+  .left-resizer {
+    right: -10px;
+  }
+  
+  .right-resizer {
+    left: -10px;
+  }
+  
+  .resizer-handle {
+    width: 6px;
+    height: 80px;
+  }
+}

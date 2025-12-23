@@ -16,13 +16,13 @@ const AboutNexus = () => {
     { name: 'Notification System', status: 'completed' },
     { name: 'Responsive Design', status: 'completed' },
     { name: 'CSS Variables Theming', status: 'completed' },
+    { name: 'Admin Dashboard', status: 'completed' },
+    { name: '3-Strike Security Rule', status: 'completed' },
+    { name: 'Voice Recording', status: 'completed' },
+    { name: 'Cross-Device Sync', status: 'completed' },
     { name: 'Dual-Sidebar Layout', status: 'planned' },
     { name: 'Linear Navigation', status: 'planned' },
-    { name: 'Admin Dashboard', status: 'planned' },
-    { name: '3-Strike Security Rule', status: 'planned' },
-    { name: 'Google Drive Integration', status: 'planned' },
-    { name: 'Voice Recording', status: 'planned' },
-    { name: 'Cross-Device Sync', status: 'planned' }
+    { name: 'Google Drive Integration', status: 'planned' }
   ];
 
   const completedFeatures = features.filter(f => f.status === 'completed').length;
@@ -89,18 +89,21 @@ const AboutNexus = () => {
             <li>👤 Advanced profile customization</li>
             <li>🔔 Smart notification system</li>
             <li>📱 Fully responsive design</li>
+            <li>📋 Admin dashboard for user management</li>
+            <li>🔒 3-strike security system with account locking</li>
+            <li>🎤 Voice message recording and playback</li>
+            <li>🔄 Cross-device voice synchronization</li>
           </ul>
         </div>
         
         <div className="footer-section">
           <h4>Coming Soon</h4>
           <ul>
-            <li>📋 Admin dashboard for user management</li>
-            <li>🔒 3-strike security system</li>
             <li>☁️ Google Drive file integration</li>
-            <li>🎤 Voice message recording</li>
-            <li>🔄 Cross-device synchronization</li>
-            <li>📐 Telegram-style dual sidebar</li>
+            <li>📐 Telegram-style dual sidebar layout</li>
+            <li>🧭 Linear navigation system</li>
+            <li>📊 Enhanced system monitoring</li>
+            <li>🔧 Advanced admin controls</li>
           </ul>
         </div>
       </div>

@@ -1,0 +1,480 @@
+/* Synced Voice Message Styles */
+.synced-voice-message {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: var(--nexus-spacing-sm) 0;
+}
+
+.synced-voice-message.compact {
+  max-width: 300px;
+}
+
+/* Voice Message Content */
+.synced-voice-message .voice-message-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nexus-spacing-sm);
+  padding: var(--nexus-spacing-sm);
+  background: var(--nexus-background-secondary);
+  border-radius: var(--nexus-border-radius);
+  border: 1px solid var(--nexus-border-color);
+  position: relative;
+}
+
+.synced-voice-message.compact .voice-message-content {
+  padding: var(--nexus-spacing-xs);
+  gap: var(--nexus-spacing-xs);
+}
+
+/* Voice Message Info with Sync Indicator */
+.synced-voice-message .voice-message-info {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-sm);
+}
+
+.synced-voice-message .voice-message-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--nexus-primary-color);
+  color: white;
+  border-radius: var(--nexus-border-radius-full);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.synced-voice-message.compact .voice-message-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.synced-voice-message .voice-message-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nexus-spacing-xs);
+  flex: 1;
+}
+
+.synced-voice-message .voice-message-duration {
+  font-size: var(--nexus-font-size-sm);
+  font-weight: var(--nexus-font-weight-medium);
+  color: var(--nexus-text-color);
+  font-family: 'Courier New', monospace;
+}
+
+.synced-voice-message .voice-message-timestamp {
+  font-size: var(--nexus-font-size-xs);
+  color: var(--nexus-text-secondary);
+}
+
+/* Sync Indicator */
+.sync-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-xs);
+  font-size: var(--nexus-font-size-xs);
+  color: var(--nexus-info-color);
+  background: var(--nexus-info-bg);
+  padding: var(--nexus-spacing-xs);
+  border-radius: var(--nexus-border-radius-sm);
+}
+
+.sync-indicator .sync-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Device Sync Controls */
+.device-sync-controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.device-sync-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--nexus-background-color);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius-full);
+  color: var(--nexus-text-secondary);
+  cursor: pointer;
+  transition: all var(--nexus-transition-fast);
+  font-size: 14px;
+}
+
+.device-sync-btn:hover {
+  background: var(--nexus-primary-color);
+  color: white;
+  border-color: var(--nexus-primary-color);
+}
+
+/* Device Sync Dropdown */
+.device-sync-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--nexus-spacing-xs);
+  background: var(--nexus-background-color);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  box-shadow: var(--nexus-shadow-lg);
+  z-index: var(--nexus-z-popover);
+  min-width: 200px;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sync-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--nexus-spacing-sm);
+  border-bottom: 1px solid var(--nexus-border-color);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: var(--nexus-font-weight-medium);
+  color: var(--nexus-text-color);
+}
+
+.sync-dropdown-header button {
+  background: none;
+  border: none;
+  font-size: var(--nexus-font-size-lg);
+  color: var(--nexus-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sync-dropdown-content {
+  padding: var(--nexus-spacing-sm);
+}
+
+.sync-option {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-sm);
+  width: 100%;
+  padding: var(--nexus-spacing-sm);
+  background: none;
+  border: none;
+  border-radius: var(--nexus-border-radius-sm);
+  color: var(--nexus-text-color);
+  cursor: pointer;
+  transition: all var(--nexus-transition-fast);
+  font-size: var(--nexus-font-size-sm);
+  text-align: left;
+}
+
+.sync-option:hover {
+  background: var(--nexus-background-secondary);
+}
+
+.sync-option svg {
+  width: 16px;
+  height: 16px;
+  color: var(--nexus-text-secondary);
+}
+
+/* Sync Status Indicators */
+.voice-sync-status {
+  position: absolute;
+  top: var(--nexus-spacing-xs);
+  right: var(--nexus-spacing-xs);
+  z-index: 1;
+}
+
+.sync-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--nexus-text-secondary);
+}
+
+.sync-status-dot.connected {
+  background: var(--nexus-success-color);
+  animation: pulse 2s infinite;
+}
+
+.sync-status-dot.syncing {
+  background: var(--nexus-warning-color);
+  animation: pulse 1s infinite;
+}
+
+.sync-status-dot.error {
+  background: var(--nexus-error-color);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Recording Sync Status */
+.recording-sync-status {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-xs);
+  padding: var(--nexus-spacing-sm);
+  background: var(--nexus-info-bg);
+  color: var(--nexus-info-color);
+  border-radius: var(--nexus-border-radius-sm);
+  font-size: var(--nexus-font-size-xs);
+  margin-top: var(--nexus-spacing-sm);
+}
+
+.recording-sync-status .sync-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Trigger Sync Indicator */
+.synced-voice-message.trigger {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.trigger-sync-indicator {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
+
+.synced-voice-message.trigger .voice-trigger-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-sm);
+  padding: var(--nexus-spacing-sm) var(--nexus-spacing-md);
+  background: var(--nexus-background-secondary);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  color: var(--nexus-text-color);
+  cursor: pointer;
+  transition: all var(--nexus-transition-fast);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: var(--nexus-font-weight-medium);
+  font-family: var(--nexus-font-family);
+}
+
+.synced-voice-message.trigger .voice-trigger-btn:hover:not(:disabled) {
+  background: var(--nexus-primary-color);
+  color: white;
+  border-color: var(--nexus-primary-color);
+  transform: translateY(-1px);
+  box-shadow: var(--nexus-shadow-sm);
+}
+
+.synced-voice-message.trigger .voice-trigger-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.synced-voice-message.trigger .voice-trigger-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.synced-voice-message.trigger .voice-trigger-btn svg {
+  font-size: 16px;
+}
+
+.synced-voice-message.compact .voice-trigger-btn {
+  padding: var(--nexus-spacing-xs) var(--nexus-spacing-sm);
+  gap: var(--nexus-spacing-xs);
+}
+
+.synced-voice-message.compact .voice-trigger-btn svg {
+  font-size: 14px;
+}
+
+/* Recorder State with Sync */
+.synced-voice-message.recorder {
+  align-items: center;
+  justify-content: center;
+  padding: var(--nexus-spacing-md);
+  background: var(--nexus-background-color);
+  border: 2px dashed var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  transition: all var(--nexus-transition-fast);
+}
+
+.synced-voice-message.recorder:hover {
+  border-color: var(--nexus-primary-color);
+  background: var(--nexus-background-secondary);
+}
+
+.synced-voice-message.compact.recorder {
+  padding: var(--nexus-spacing-sm);
+}
+
+/* Message Bubble Styles with Sync */
+.synced-voice-message.sent {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.synced-voice-message.sent .voice-message-content {
+  background: var(--nexus-primary-color);
+  color: white;
+}
+
+.synced-voice-message.sent .voice-message-icon {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.synced-voice-message.sent .voice-message-duration {
+  color: white;
+}
+
+.synced-voice-message.sent .voice-message-timestamp {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.synced-voice-message.sent .sync-indicator {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.synced-voice-message.received {
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+.synced-voice-message.received .voice-message-content {
+  background: var(--nexus-background-color);
+  border-color: var(--nexus-border-secondary);
+}
+
+/* Loading State with Sync */
+.synced-voice-message.loading .voice-message-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.synced-voice-message.loading .voice-message-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Error State with Sync */
+.synced-voice-message.error .voice-message-content {
+  background: var(--nexus-error-bg);
+  border-color: var(--nexus-error-color);
+}
+
+.synced-voice-message.error .voice-message-icon {
+  background: var(--nexus-error-color);
+}
+
+.synced-voice-message.error .voice-message-duration {
+  color: var(--nexus-error-color);
+}
+
+.synced-voice-message.error .sync-status-dot {
+  background: var(--nexus-error-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .synced-voice-message {
+    max-width: 280px;
+  }
+  
+  .synced-voice-message.compact {
+    max-width: 220px;
+  }
+  
+  .device-sync-dropdown {
+    min-width: 180px;
+  }
+  
+  .sync-option {
+    padding: var(--nexus-spacing-xs);
+    font-size: var(--nexus-font-size-xs);
+  }
+  
+  .device-sync-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+/* Animation for synced voice message appearance */
+.synced-voice-message {
+  animation: slideInWithSync 0.3s ease-out;
+}
+
+@keyframes slideInWithSync {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .synced-voice-message.sent .voice-message-content {
+    background: var(--nexus-accent-color);
+  }
+  
+  .synced-voice-message.sent .voice-message-icon {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .sync-status-dot.connected {
+    background: var(--nexus-success-color);
+  }
+}

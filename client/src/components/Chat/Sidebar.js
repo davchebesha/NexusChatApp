@@ -9,7 +9,7 @@ import ProfilePage from '../Profile/ProfilePage';
 import NotificationsPage from '../Notifications/NotificationsPage';
 import './Chat.css';
 
-const Sidebar = ({ show }) => {
+const Sidebar = ({ show, isCollapsed = false, showIconsOnly = false }) => {
   const { user, logout } = useAuth();
   const { chats, selectChat, selectedChat, onlineUsers } = useChat();
   const [searchQuery, setSearchQuery] = useState('');
@@ -84,19 +84,21 @@ const Sidebar = ({ show }) => {
   }
 
   return (
-    <div className={`sidebar ${show ? 'show' : 'hide'}`}>
+    <div className={`sidebar ${show ? 'show' : 'hide'} ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-header">
         <div className="user-info" onClick={() => setShowProfile(true)} style={{ cursor: 'pointer' }}>
           <img src={user?.avatar || '/default-avatar.png'} alt="Avatar" className="avatar avatar-md" />
-          <div>
-            <h3>{user?.username}</h3>
-            <span className="status-text">{user?.status}</span>
-          </div>
+          {!showIconsOnly && (
+            <div>
+              <h3>{user?.username}</h3>
+              <span className="status-text">{user?.status}</span>
+            </div>
+          )}
         </div>
         <div className="header-actions">
           <button className="icon-btn notification-btn" onClick={() => setShowNotifications(true)} title="Notifications">
             <FiBell />
-            <span className="notification-badge">3</span>
+            {!showIconsOnly && <span className="notification-badge">3</span>}
           </button>
           <button className="icon-btn" onClick={() => setShowSearch(true)} title="Search">
             <FiSearch />
@@ -110,42 +112,55 @@ const Sidebar = ({ show }) => {
         </div>
       </div>
 
-      <div className="search-bar">
-        <FiSearch />
-        <input
-          type="text"
-          placeholder="Search chats..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
+      {!showIconsOnly && (
+        <>
+          <div className="search-bar">
+            <FiSearch />
+            <input
+              type="text"
+              placeholder="Search chats..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
 
-      <button className="btn btn-primary new-chat-btn" onClick={() => setShowNewChat(true)}>
-        <FiMessageSquare /> New Chat
-      </button>
+          <button className="btn btn-primary new-chat-btn" onClick={() => setShowNewChat(true)}>
+            <FiMessageSquare /> New Chat
+          </button>
+        </>
+      )}
+
+      {showIconsOnly && (
+        <button className="icon-btn new-chat-icon" onClick={() => setShowNewChat(true)} title="New Chat">
+          <FiMessageSquare />
+        </button>
+      )}
 
       <div className="chat-list">
         {filteredChats.map(chat => (
           <div
             key={chat._id}
-            className={`chat-item ${selectedChat?._id === chat._id ? 'active' : ''}`}
+            className={`chat-item ${selectedChat?._id === chat._id ? 'active' : ''} ${showIconsOnly ? 'icon-only' : ''}`}
             onClick={() => selectChat(chat)}
+            title={showIconsOnly ? getChatName(chat) : ''}
           >
             <div className="chat-avatar-wrapper">
               <img src={getChatAvatar(chat)} alt="Avatar" className="avatar avatar-md" />
               {isUserOnline(chat) && <span className="status-indicator status-online"></span>}
             </div>
-            <div className="chat-info">
-              <div className="chat-header">
-                <h4>{getChatName(chat)}</h4>
-                <span className="chat-time">
-                  {chat.lastMessage ? new Date(chat.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
-                </span>
+            {!showIconsOnly && (
+              <div className="chat-info">
+                <div className="chat-header">
+                  <h4>{getChatName(chat)}</h4>
+                  <span className="chat-time">
+                    {chat.lastMessage ? new Date(chat.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
+                  </span>
+                </div>
+                <p className="chat-last-message">
+                  {chat.lastMessage?.content || 'No messages yet'}
+                </p>
               </div>
-              <p className="chat-last-message">
-                {chat.lastMessage?.content || 'No messages yet'}
-              </p>
-            </div>
+            )}
           </div>
         ))}
       </div>

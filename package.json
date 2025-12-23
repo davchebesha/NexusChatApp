@@ -9,10 +9,16 @@
     "start": "cd server && npm start",
     "build": "cd client && npm run build"
   },
-  "keywords": ["chat", "websocket", "webrtc", "distributed"],
+  "keywords": [
+    "chat",
+    "websocket",
+    "webrtc",
+    "distributed"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.2"
   }
 }

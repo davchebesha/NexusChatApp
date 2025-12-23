@@ -1,0 +1,480 @@
+/* Telegram Voice Recorder - Professional Voice Recording Styles */
+.telegram-voice-recorder {
+  display: flex;
+  align-items: center;
+  background: var(--color-background, #ffffff);
+  border-radius: 24px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color, #e4e6eb);
+  transition: all 0.3s ease;
+  min-height: 48px;
+}
+
+.telegram-voice-recorder.recording {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  border-color: #ff6b6b;
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+}
+
+.telegram-voice-recorder.recorded {
+  background: linear-gradient(135deg, var(--primary-color, #10b981), #059669);
+  border-color: var(--primary-color, #10b981);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Idle State */
+.recorder-idle {
+  width: 100%;
+}
+
+.record-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--primary-color, #10b981), #059669);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.record-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.record-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.mic-icon {
+  width: 20px;
+  height: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Recording State */
+.recorder-active {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 4px;
+}
+
+.recording-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.lock-btn.locked {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.recording-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.duration-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.recording-indicator {
+  width: 8px;
+  height: 8px;
+  background: #ff4757;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+.volume-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.volume-indicator svg {
+  width: 12px;
+  height: 12px;
+}
+
+.volume-bar {
+  width: 60px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.volume-fill {
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: width 0.1s ease;
+}
+
+/* Waveform */
+.waveform-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 32px;
+  flex: 1;
+  padding: 0 8px;
+  overflow: hidden;
+}
+
+.waveform-bar {
+  width: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+  transition: height 0.1s ease;
+  min-height: 2px;
+}
+
+.recording-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.cancel-btn,
+.stop-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.stop-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #ff6b6b;
+}
+
+.stop-btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+/* Playback State */
+.recorder-playback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px;
+}
+
+.playback-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.play-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.play-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.playback-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.playback-info .duration {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.waveform-preview {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  height: 16px;
+}
+
+.mini-bar {
+  width: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 1px;
+  min-height: 2px;
+}
+
+.playback-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.delete-btn,
+.send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.send-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary-color, #10b981);
+}
+
+.send-btn:hover {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .telegram-voice-recorder {
+    padding: 6px;
+    min-height: 44px;
+  }
+
+  .record-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .mic-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .recorder-active {
+    gap: 8px;
+    padding: 2px;
+  }
+
+  .control-btn,
+  .cancel-btn,
+  .stop-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .recording-info {
+    min-width: 100px;
+  }
+
+  .duration-display {
+    font-size: 13px;
+  }
+
+  .volume-bar {
+    width: 50px;
+  }
+
+  .waveform-container {
+    height: 28px;
+    padding: 0 6px;
+  }
+
+  .waveform-bar {
+    width: 2px;
+  }
+
+  .play-btn,
+  .delete-btn,
+  .send-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .playback-info .duration {
+    font-size: 13px;
+  }
+
+  .waveform-preview {
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .telegram-voice-recorder {
+    padding: 4px;
+    min-height: 40px;
+  }
+
+  .record-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .recorder-active {
+    gap: 6px;
+  }
+
+  .recording-controls {
+    gap: 2px;
+  }
+
+  .control-btn,
+  .cancel-btn,
+  .stop-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .recording-info {
+    min-width: 80px;
+  }
+
+  .volume-bar {
+    width: 40px;
+  }
+
+  .waveform-container {
+    padding: 0 4px;
+  }
+
+  .playback-actions {
+    gap: 4px;
+  }
+
+  .play-btn,
+  .delete-btn,
+  .send-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Accessibility */
+.record-btn:focus,
+.control-btn:focus,
+.play-btn:focus,
+.cancel-btn:focus,
+.stop-btn:focus,
+.delete-btn:focus,
+.send-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .telegram-voice-recorder {
+    border-width: 2px;
+  }
+
+  .control-btn,
+  .play-btn,
+  .cancel-btn,
+  .stop-btn,
+  .delete-btn,
+  .send-btn {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .telegram-voice-recorder *,
+  .telegram-voice-recorder *::before,
+  .telegram-voice-recorder *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .telegram-voice-recorder {
+    --color-background: #2d2d2d;
+    --border-color: #404040;
+  }
+}

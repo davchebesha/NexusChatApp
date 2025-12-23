@@ -1,0 +1,209 @@
+/* Nexus ChatApp Branding Variables */
+:root {
+  /* Backward-compatible aliases used across components */
+  --color-primary: var(--nexus-primary-color);
+  --color-secondary: var(--nexus-secondary-color);
+  --color-accent: var(--nexus-accent-color);
+  --color-background: var(--nexus-background-color);
+  --color-text: var(--nexus-text-color);
+
+  /* Primary Brand Colors - Nexus Red Palette */
+  --nexus-primary-color: #b71c1c; /* deep red */
+  --nexus-secondary-color: #8b0000; /* darker crimson */
+  --nexus-accent-color: #e53935; /* vibrant red accent */
+  
+  /* Background Colors - Professional Gradient */
+  --nexus-background-color: #ffffff;
+  --nexus-background-secondary: #f7fafc;
+  --nexus-background-tertiary: #edf2f7;
+  --nexus-background-gradient: linear-gradient(135deg, #8b0000 0%, #b71c1c 50%, #ff5252 100%);
+  --nexus-background-professional: linear-gradient(135deg, #2c0b0b 0%, #6b0f0f 50%, #b71c1c 100%);
+  
+  /* Text Colors */
+  --nexus-text-color: #2d3748;
+  --nexus-text-secondary: #4a5568;
+  --nexus-text-muted: #718096;
+  --nexus-text-inverse: #ffffff;
+  
+  /* Border Colors */
+  --nexus-border-color: #e2e8f0;
+  --nexus-border-secondary: #cbd5e1;
+  --nexus-border-focus: var(--nexus-primary-color);
+  
+  /* Status Colors */
+  --nexus-success-color: #38a169;
+  --nexus-warning-color: #d69e2e;
+  --nexus-error-color: #e53e3e;
+  --nexus-info-color: #3182ce;
+  
+  /* Status Background Colors */
+  --nexus-success-bg: #ecfdf5;
+  --nexus-warning-bg: #fffbeb;
+  --nexus-error-bg: #fef2f2;
+  --nexus-info-bg: #eff6ff;
+  
+  /* Typography */
+  --nexus-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --nexus-heading-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --nexus-font-size-xs: 0.75rem;
+  --nexus-font-size-sm: 0.875rem;
+  --nexus-font-size-base: 1rem;
+  --nexus-font-size-lg: 1.125rem;
+  --nexus-font-size-xl: 1.25rem;
+  --nexus-font-size-2xl: 1.5rem;
+  --nexus-font-size-3xl: 1.875rem;
+  --nexus-font-size-4xl: 2.25rem;
+  
+  /* Font Weights */
+  --nexus-font-weight-normal: 400;
+  --nexus-font-weight-medium: 500;
+  --nexus-font-weight-semibold: 600;
+  --nexus-font-weight-bold: 700;
+  
+  /* Line Heights */
+  --nexus-line-height-tight: 1.25;
+  --nexus-line-height-normal: 1.5;
+  --nexus-line-height-relaxed: 1.75;
+  
+  /* Spacing */
+  --nexus-spacing-xs: 0.25rem;
+  --nexus-spacing-sm: 0.5rem;
+  --nexus-spacing-md: 1rem;
+  --nexus-spacing-lg: 1.5rem;
+  --nexus-spacing-xl: 2rem;
+  --nexus-spacing-2xl: 3rem;
+  --nexus-spacing-3xl: 4rem;
+  
+  /* Layout */
+  --nexus-border-radius: 8px;
+  --nexus-border-radius-sm: 4px;
+  --nexus-border-radius-lg: 12px;
+  --nexus-border-radius-xl: 16px;
+  --nexus-border-radius-full: 9999px;
+  
+  /* Shadows */
+  --nexus-shadow-color: rgba(0, 0, 0, 0.1);
+  --nexus-shadow-sm: 0 1px 2px 0 var(--nexus-shadow-color);
+  --nexus-shadow-md: 0 4px 6px -1px var(--nexus-shadow-color);
+  --nexus-shadow-lg: 0 10px 15px -3px var(--nexus-shadow-color);
+  --nexus-shadow-xl: 0 20px 25px -5px var(--nexus-shadow-color);
+  
+  /* Transitions */
+  --nexus-transition-fast: 150ms ease-in-out;
+  --nexus-transition-normal: 250ms ease-in-out;
+  --nexus-transition-slow: 350ms ease-in-out;
+  
+  /* Z-Index Scale */
+  --nexus-z-dropdown: 1000;
+  --nexus-z-sticky: 1020;
+  --nexus-z-fixed: 1030;
+  --nexus-z-modal-backdrop: 1040;
+  --nexus-z-modal: 1050;
+  --nexus-z-popover: 1060;
+  --nexus-z-tooltip: 1070;
+  --nexus-z-toast: 1080;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nexus-background-color: #173164;
+    --nexus-background-secondary: #2d3748;
+    --nexus-background-tertiary: #4a5568;
+    --nexus-text-color: #f7fafc;
+    --nexus-text-secondary: #e2e8f0;
+    --nexus-text-muted: #a0aec0;
+    --nexus-border-color: #4a5568;
+    --nexus-border-secondary: #21146b;
+    --nexus-shadow-color: #6912117d;
+  }
+}
+
+/* Base Typography Classes */
+.nexus-text-xs { font-size: var(--nexus-font-size-xs); }
+.nexus-text-sm { font-size: var(--nexus-font-size-sm); }
+.nexus-text-base { font-size: var(--nexus-font-size-base); }
+.nexus-text-lg { font-size: var(--nexus-font-size-lg); }
+.nexus-text-xl { font-size: var(--nexus-font-size-xl); }
+.nexus-text-2xl { font-size: var(--nexus-font-size-2xl); }
+.nexus-text-3xl { font-size: var(--nexus-font-size-3xl); }
+.nexus-text-4xl { font-size: var(--nexus-font-size-4xl); }
+
+.nexus-font-normal { font-weight: var(--nexus-font-weight-normal); }
+.nexus-font-medium { font-weight: var(--nexus-font-weight-medium); }
+.nexus-font-semibold { font-weight: var(--nexus-font-weight-semibold); }
+.nexus-font-bold { font-weight: var(--nexus-font-weight-bold); }
+
+.nexus-text-primary { color: var(--nexus-primary-color); }
+.nexus-text-secondary { color: var(--nexus-text-secondary); }
+.nexus-text-muted { color: var(--nexus-text-muted); }
+.nexus-text-success { color: var(--nexus-success-color); }
+.nexus-text-warning { color: var(--nexus-warning-color); }
+.nexus-text-error { color: var(--nexus-error-color); }
+.nexus-text-info { color: var(--nexus-info-color); }
+
+/* Base Layout Classes */
+.nexus-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--nexus-spacing-md);
+}
+
+.nexus-card {
+  background: var(--nexus-background-color);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  box-shadow: var(--nexus-shadow-sm);
+  padding: var(--nexus-spacing-lg);
+}
+
+.nexus-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nexus-spacing-sm) var(--nexus-spacing-md);
+  border: none;
+  border-radius: var(--nexus-border-radius);
+  font-family: var(--nexus-font-family);
+  font-weight: var(--nexus-font-weight-medium);
+  font-size: var(--nexus-font-size-sm);
+  line-height: var(--nexus-line-height-tight);
+  cursor: pointer;
+  transition: all var(--nexus-transition-fast);
+  text-decoration: none;
+}
+
+.nexus-button-primary {
+  background: var(--nexus-primary-color);
+  color: var(--nexus-text-inverse);
+}
+
+.nexus-button-primary:hover {
+  background: var(--nexus-secondary-color);
+}
+
+.nexus-button-secondary {
+  background: var(--nexus-background-secondary);
+  color: var(--nexus-text-color);
+  border: 1px solid var(--nexus-border-color);
+}
+
+.nexus-button-secondary:hover {
+  background: var(--nexus-background-tertiary);
+}
+
+/* Utility Classes */
+.nexus-shadow-sm { box-shadow: var(--nexus-shadow-sm); }
+.nexus-shadow-md { box-shadow: var(--nexus-shadow-md); }
+.nexus-shadow-lg { box-shadow: var(--nexus-shadow-lg); }
+.nexus-shadow-xl { box-shadow: var(--nexus-shadow-xl); }
+
+.nexus-rounded { border-radius: var(--nexus-border-radius); }
+.nexus-rounded-sm { border-radius: var(--nexus-border-radius-sm); }
+.nexus-rounded-lg { border-radius: var(--nexus-border-radius-lg); }
+.nexus-rounded-xl { border-radius: var(--nexus-border-radius-xl); }
+.nexus-rounded-full { border-radius: var(--nexus-border-radius-full); }
+
+.nexus-transition { transition: all var(--nexus-transition-normal); }
+.nexus-transition-fast { transition: all var(--nexus-transition-fast); }
+.nexus-transition-slow { transition: all var(--nexus-transition-slow); }

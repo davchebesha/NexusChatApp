@@ -1,99 +1,334 @@
+/* Nexus ChatApp Logo Styles - Fixed and Enhanced */
 .nexus-logo {
-  display: flex;
+  --logo-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --logo-pulse-color: rgba(255, 255, 255, 0.6);
+  
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  color: var(--color-primary, #667eea);
+  gap: 0.75rem;
+  user-select: none;
+  text-decoration: none;
+  z-index: 1;
+  padding: 0.5rem;
+  border-radius: 12px;
+  /* Remove default transitions to make it fixed */
+  transition: none;
 }
 
+/* Logo icon container - Fixed */
 .logo-icon {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  /* Remove transitions to make it fixed */
+  transition: none;
 }
 
-.logo-icon svg {
+/* Logo image - Fixed and stable */
+.logo-img {
   display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transform-origin: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Remove transitions and transforms to make it completely fixed */
+  transition: none;
+  transform: none !important;
 }
 
+/* Logo text container - Enhanced styling */
 .logo-text {
   display: flex;
   flex-direction: column;
+  line-height: 1.1;
+  overflow: hidden;
+  /* Remove transitions to make text fixed */
+  transition: none;
+}
+
+/* Logo text - NEXUS with enhanced smart styling */
+.logo-nexus {
+  font-size: 1.5em;
+  font-weight: 900;
+  /* Enhanced gradient with smart colors */
+  background: linear-gradient(135deg, #b71c1c 0%, #e53935 50%, #ff5252 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.8px;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1;
+  text-transform: uppercase;
+  /* Add text shadow for depth */
+  text-shadow: 0 2px 4px rgba(183, 28, 28, 0.3);
+  /* Remove transitions to make it fixed */
+  transition: none;
 }
 
-.logo-brand {
+/* Logo text - CHATAPP with smart beautiful styling */
+.logo-chat {
+  font-size: 0.65em;
   font-weight: 700;
-  color: var(--color-primary, #667eea);
+  /* Beautiful gradient color for CHATAPP */
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  margin-top: 0.1em;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  text-transform: uppercase;
+  /* Add subtle text shadow */
+  text-shadow: 0 1px 2px rgba(44, 62, 80, 0.2);
+  /* Remove transitions to make it fixed */
+  transition: none;
 }
 
-.logo-subtitle {
-  font-weight: 500;
-  color: var(--color-textSecondary, #666);
-  font-size: 0.8em;
+/* Loading state - Keep minimal loading effect */
+.nexus-logo.logo-loading .logo-img {
+  opacity: 0.7;
+  filter: grayscale(0.5) blur(1px);
 }
 
-/* Size variants */
+/* Remove all hover effects - Logo is now fixed */
+.nexus-logo:hover {
+  transform: none !important;
+}
+
+.nexus-logo:hover .logo-img {
+  transform: none !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) !important;
+}
+
+.nexus-logo:hover .logo-nexus {
+  letter-spacing: 0.8px !important;
+  background: linear-gradient(135deg, #b71c1c 0%, #e53935 50%, #ff5252 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+.nexus-logo:hover .logo-chat {
+  letter-spacing: 2px !important;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Disable pulse animation */
+.logo-pulse {
+  display: none !important;
+}
+
+.nexus-logo.logo-hover .logo-pulse {
+  display: none !important;
+}
+
+/* Size Variants - Enhanced with smart styling */
+.logo-sm {
+  gap: var(--nexus-spacing-xs);
+}
+
 .logo-sm .logo-icon svg {
-  width: 24px;
-  height: 24px;
-}
-
-.logo-sm .logo-brand {
-  font-size: 16px;
-}
-
-.logo-sm .logo-subtitle {
-  font-size: 12px;
-}
-
-.logo-md .logo-icon svg {
-  width: 32px;
+  width: 60px;
   height: 32px;
 }
 
-.logo-md .logo-brand {
-  font-size: 20px;
+.logo-sm .logo-img {
+  width: 60px;
+  height: 32px;
 }
 
-.logo-md .logo-subtitle {
-  font-size: 14px;
+.logo-sm .logo-nexus {
+  font-size: 1.1em;
+  font-weight: 900;
+  background: linear-gradient(135deg, #b71c1c 0%, #e53935 50%, #ff5252 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-sm .logo-chat {
+  font-size: 0.5em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-md {
+  gap: var(--nexus-spacing-sm);
+}
+
+.logo-md .logo-icon svg {
+  width: 95px;
+  height: 50px;
+}
+
+.logo-md .logo-nexus {
+  font-size: 1.5em;
+  font-weight: 900;
+  background: linear-gradient(135deg, #b71c1c 0%, #e53935 50%, #ff5252 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-md .logo-img {
+  width: 95px;
+  height: 50px;
+}
+
+.logo-md .logo-chat {
+  font-size: 0.65em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-lg {
+  gap: var(--nexus-spacing-md);
 }
 
 .logo-lg .logo-icon svg {
-  width: 48px;
-  height: 48px;
+  width: 120px;
+  height: 63px;
 }
 
-.logo-lg .logo-brand {
-  font-size: 28px;
+.logo-lg .logo-img {
+  width: 120px;
+  height: 63px;
 }
 
-.logo-lg .logo-subtitle {
-  font-size: 18px;
+.logo-lg .logo-nexus {
+  font-size: 2em;
+  font-weight: 900;
+  background: linear-gradient(135deg, #b71c1c 0%, #e53935 50%, #ff5252 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-lg .logo-chat {
+  font-size: 0.7em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-xl {
+  gap: var(--nexus-spacing-lg);
 }
 
 .logo-xl .logo-icon svg {
-  width: 64px;
-  height: 64px;
+  width: 150px;
+  height: 79px;
 }
 
-.logo-xl .logo-brand {
-  font-size: 36px;
+.logo-xl .logo-img {
+  width: 150px;
+  height: 79px;
 }
 
-.logo-xl .logo-subtitle {
-  font-size: 24px;
+.logo-xl .logo-nexus {
+  font-size: 2.5em;
+  font-weight: 900;
+  background: linear-gradient(135deg, #b71c1c 0%, #e53935 50%, #ff5252 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* White variant for dark backgrounds */
-.nexus-logo.logo-white {
-  color: white;
+.logo-xl .logo-chat {
+  font-size: 0.8em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.nexus-logo.logo-white .logo-brand {
-  color: white;
+/* Remove all hover effects from size variants */
+.nexus-logo:hover .logo-icon svg {
+  transform: none !important;
 }
 
-.nexus-logo.logo-white .logo-subtitle {
-  color: rgba(255, 255, 255, 0.8);
+.nexus-logo:hover .logo-nexus {
+  background: linear-gradient(135deg, #b71c1c 0%, #e53935 50%, #ff5252 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+.nexus-logo:hover .logo-chat {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Responsive Design - Enhanced */
+@media (max-width: 768px) {
+  .nexus-logo {
+    gap: var(--nexus-spacing-xs);
+  }
+  
+  .logo-md .logo-icon svg {
+    width: 80px;
+    height: 42px;
+  }
+  
+  .logo-md .logo-img {
+    width: 80px;
+    height: 42px;
+  }
+  
+  .logo-md .logo-nexus {
+    font-size: 1.3em;
+    font-weight: 900;
+    background: linear-gradient(135deg, #b71c1c 0%, #e53935 50%, #ff5252 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .logo-md .logo-chat {
+    font-size: 0.6em;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Additional enhancement for ultra-modern look */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .logo-nexus, .logo-chat {
+    background-attachment: fixed;
+  }
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (background-clip: text) and not (-webkit-background-clip: text) {
+  .logo-nexus {
+    color: #b71c1c !important;
+    background: none !important;
+  }
+  
+  .logo-chat {
+    color: #2c3e50 !important;
+    background: none !important;
+  }
 }

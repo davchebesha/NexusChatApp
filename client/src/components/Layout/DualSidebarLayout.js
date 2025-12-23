@@ -12,23 +12,31 @@ const DualSidebarLayout = ({
   showRightSidebar = false 
 }) => {
   const { theme } = useTheme();
-  const [leftCollapsed, setLeftCollapsed] = useState(false);
-  const [rightCollapsed, setRightCollapsed] = useState(!showRightSidebar);
+  // Desktop collapsed state (controls layout/margins)
+  const [leftCollapsedDesktop, setLeftCollapsedDesktop] = useState(false);
+  const [rightCollapsedDesktop, setRightCollapsedDesktop] = useState(!showRightSidebar);
+  // Mobile overlay state (independent from desktop)
+  const [leftMobileOpen, setLeftMobileOpen] = useState(false);
+  const [rightMobileOpen, setRightMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
-      
+
+      // Preserve desktop collapsed state when switching to mobile; mobile overlay
+      // is separate and should be closed on breakpoint changes
       if (mobile) {
-        setLeftCollapsed(true);
-        setRightCollapsed(true);
-        setMobileMenuOpen(false);
+        setLeftMobileOpen(false);
+        setRightMobileOpen(false);
       } else {
-        setLeftCollapsed(false);
-        setRightCollapsed(!showRightSidebar);
+        // ensure mobile overlays are closed when returning to desktop
+        setLeftMobileOpen(false);
+        setRightMobileOpen(false);
+        // keep desktop collapsed defaults (don't force open/close)
+        setLeftCollapsedDesktop((v) => v);
+        setRightCollapsedDesktop((v) => v);
       }
     };
 
@@ -39,35 +47,41 @@ const DualSidebarLayout = ({
 
   const toggleLeftSidebar = () => {
     if (isMobile) {
-      setMobileMenuOpen(!mobileMenuOpen);
+      setLeftMobileOpen((open) => !open);
     } else {
-      setLeftCollapsed(!leftCollapsed);
+      setLeftCollapsedDesktop((c) => !c);
     }
   };
 
   const toggleRightSidebar = () => {
-    setRightCollapsed(!rightCollapsed);
+    if (isMobile) {
+      setRightMobileOpen((open) => !open);
+    } else {
+      setRightCollapsedDesktop((c) => !c);
+    }
   };
 
-  const closeMobileMenu = () => {
+  const closeMobileMenus = () => {
     if (isMobile) {
-      setMobileMenuOpen(false);
+      setLeftMobileOpen(false);
+      setRightMobileOpen(false);
     }
   };
 
   return (
     <div className="dual-sidebar-layout" data-theme={theme?.name}>
       {/* Mobile Overlay */}
-      {isMobile && mobileMenuOpen && (
-        <div className="mobile-overlay" onClick={closeMobileMenu} />
+      {isMobile && (leftMobileOpen || rightMobileOpen) && (
+        <div className="mobile-overlay" onClick={closeMobileMenus} />
       )}
 
       {/* Left Sidebar */}
       <div 
-        className={`left-sidebar ${leftCollapsed ? 'collapsed' : ''} ${isMobile && mobileMenuOpen ? 'mobile-open' : ''}`}
+        className={`left-sidebar ${leftCollapsedDesktop ? 'collapsed' : ''} ${isMobile && leftMobileOpen ? 'mobile-open' : ''}`}
         style={{ 
-          width: isMobile ? '280px' : leftCollapsed ? '60px' : `${leftSidebarWidth}px` 
+          width: isMobile ? (leftMobileOpen ? `${leftSidebarWidth}px` : '0px') : (leftCollapsedDesktop ? '60px' : `${leftSidebarWidth}px`)
         }}
+        aria-hidden={isMobile && !leftMobileOpen}
       >
         <div className="sidebar-content">
           {leftSidebar}
@@ -77,9 +91,9 @@ const DualSidebarLayout = ({
           <button 
             className="sidebar-toggle left-toggle"
             onClick={toggleLeftSidebar}
-            title={leftCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            title={leftCollapsedDesktop ? 'Expand sidebar' : 'Collapse sidebar'}
           >
-            {leftCollapsed ? <FiChevronRight /> : <FiChevronLeft />}
+            {leftCollapsedDesktop ? <FiChevronRight /> : <FiChevronLeft />}
           </button>
         )}
       </div>
@@ -88,20 +102,20 @@ const DualSidebarLayout = ({
       <div 
         className="main-content"
         style={{
-          marginLeft: isMobile ? '0' : leftCollapsed ? '60px' : `${leftSidebarWidth}px`,
-          marginRight: isMobile ? '0' : rightCollapsed ? '0' : `${rightSidebarWidth}px`
+          marginLeft: isMobile ? '0' : (leftCollapsedDesktop ? '60px' : `${leftSidebarWidth}px`),
+          marginRight: isMobile ? '0' : (rightCollapsedDesktop ? '0' : `${rightSidebarWidth}px`)
         }}
       >
         {/* Mobile Header */}
         {isMobile && (
           <div className="mobile-header">
             <button className="mobile-menu-btn" onClick={toggleLeftSidebar}>
-              {mobileMenuOpen ? <FiX /> : <FiMenu />}
+              {leftMobileOpen ? <FiX /> : <FiMenu />}
             </button>
             <h1>Nexus ChatApp</h1>
             {showRightSidebar && (
               <button className="mobile-menu-btn" onClick={toggleRightSidebar}>
-                <FiMenu />
+                {rightMobileOpen ? <FiX /> : <FiMenu />}
               </button>
             )}
           </div>

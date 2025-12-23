@@ -1,0 +1,378 @@
+/* Logo Showcase - Professional Display Styles */
+.logo-showcase {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transition: all 0.3s ease;
+}
+
+.logo-showcase.dark {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+}
+
+/* Header */
+.showcase-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.showcase-header h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  background: linear-gradient(135deg, #dc2626, #ff4757);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.showcase-header p {
+  font-size: 20px;
+  color: #666;
+  margin: 0 0 32px 0;
+}
+
+.logo-showcase.dark .showcase-header p {
+  color: #a0a0a0;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.control input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #dc2626;
+}
+
+/* Logo Grid */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  margin-bottom: 80px;
+}
+
+.logo-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo-showcase.dark .logo-card {
+  background: #2d2d2d;
+  border-color: #404040;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.logo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.logo-card.featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border: 2px solid #dc2626;
+}
+
+.logo-showcase.dark .logo-card.featured {
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+}
+
+.logo-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  margin-bottom: 24px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, transparent 70%);
+  border-radius: 16px;
+  position: relative;
+}
+
+.logo-card.featured .logo-display {
+  min-height: 280px;
+}
+
+.logo-info h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #333;
+}
+
+.logo-showcase.dark .logo-info h3 {
+  color: white;
+}
+
+.logo-info p {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.logo-showcase.dark .logo-info p {
+  color: #a0a0a0;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specs span {
+  font-size: 14px;
+  color: #555;
+  padding: 6px 12px;
+  background: #f8f9fa;
+  border-radius: 20px;
+  border-left: 3px solid #dc2626;
+}
+
+.logo-showcase.dark .specs span {
+  color: #ccc;
+  background: #404040;
+}
+
+/* Size Variations */
+.logo-card.sizes .logo-display {
+  background: none;
+}
+
+.size-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Color Variations */
+.logo-card.colors .logo-display {
+  background: none;
+  padding: 0;
+}
+
+.color-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.color-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Technical Specifications */
+.tech-specs {
+  margin-bottom: 60px;
+}
+
+.tech-specs h2 {
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.logo-showcase.dark .tech-specs h2 {
+  color: white;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.spec-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #dc2626;
+}
+
+.logo-showcase.dark .spec-card {
+  background: #2d2d2d;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.spec-card h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: #333;
+}
+
+.logo-showcase.dark .spec-card h4 {
+  color: white;
+}
+
+.spec-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spec-card li {
+  padding: 8px 0;
+  color: #555;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  padding-left: 20px;
+}
+
+.spec-card li:before {
+  content: "•";
+  color: #dc2626;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.logo-showcase.dark .spec-card li {
+  color: #ccc;
+  border-bottom-color: #404040;
+}
+
+.spec-card li:last-child {
+  border-bottom: none;
+}
+
+/* Implementation */
+.implementation {
+  text-align: center;
+}
+
+.implementation h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.logo-showcase.dark .implementation h2 {
+  color: white;
+}
+
+.code-block {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 0 auto;
+  max-width: 600px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.code-block pre {
+  color: #f8f8f2;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .logo-showcase {
+    padding: 20px 16px;
+  }
+
+  .showcase-header h1 {
+    font-size: 32px;
+  }
+
+  .showcase-header p {
+    font-size: 16px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .logo-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .logo-card {
+    padding: 24px;
+  }
+
+  .logo-display {
+    min-height: 150px;
+  }
+
+  .logo-card.featured .logo-display {
+    min-height: 200px;
+  }
+
+  .size-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .color-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-specs h2,
+  .implementation h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase-header h1 {
+    font-size: 24px;
+  }
+
+  .logo-card {
+    padding: 20px;
+  }
+
+  .logo-info h3 {
+    font-size: 20px;
+  }
+
+  .code-block {
+    padding: 16px;
+  }
+
+  .code-block pre {
+    font-size: 12px;
+  }
+}

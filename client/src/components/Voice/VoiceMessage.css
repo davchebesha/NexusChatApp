@@ -1,0 +1,285 @@
+/* Voice Message Styles */
+.voice-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: var(--nexus-spacing-sm) 0;
+}
+
+.voice-message.compact {
+  max-width: 300px;
+}
+
+/* Voice Message Content */
+.voice-message-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nexus-spacing-sm);
+  padding: var(--nexus-spacing-sm);
+  background: var(--nexus-background-secondary);
+  border-radius: var(--nexus-border-radius);
+  border: 1px solid var(--nexus-border-color);
+}
+
+.voice-message.compact .voice-message-content {
+  padding: var(--nexus-spacing-xs);
+  gap: var(--nexus-spacing-xs);
+}
+
+/* Voice Message Info */
+.voice-message-info {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-sm);
+}
+
+.voice-message-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--nexus-primary-color);
+  color: white;
+  border-radius: var(--nexus-border-radius-full);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.voice-message.compact .voice-message-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.voice-message-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nexus-spacing-xs);
+  flex: 1;
+}
+
+.voice-message-duration {
+  font-size: var(--nexus-font-size-sm);
+  font-weight: var(--nexus-font-weight-medium);
+  color: var(--nexus-text-color);
+  font-family: 'Courier New', monospace;
+}
+
+.voice-message-timestamp {
+  font-size: var(--nexus-font-size-xs);
+  color: var(--nexus-text-secondary);
+}
+
+/* Voice Message Recorder State */
+.voice-message.recorder {
+  align-items: center;
+  justify-content: center;
+  padding: var(--nexus-spacing-md);
+  background: var(--nexus-background-color);
+  border: 2px dashed var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  transition: all var(--nexus-transition-fast);
+}
+
+.voice-message.recorder:hover {
+  border-color: var(--nexus-primary-color);
+  background: var(--nexus-background-secondary);
+}
+
+.voice-message.compact.recorder {
+  padding: var(--nexus-spacing-sm);
+}
+
+/* Voice Trigger Button */
+.voice-message.trigger {
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-trigger-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-sm);
+  padding: var(--nexus-spacing-sm) var(--nexus-spacing-md);
+  background: var(--nexus-background-secondary);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  color: var(--nexus-text-color);
+  cursor: pointer;
+  transition: all var(--nexus-transition-fast);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: var(--nexus-font-weight-medium);
+  font-family: var(--nexus-font-family);
+}
+
+.voice-trigger-btn:hover:not(:disabled) {
+  background: var(--nexus-primary-color);
+  color: white;
+  border-color: var(--nexus-primary-color);
+  transform: translateY(-1px);
+  box-shadow: var(--nexus-shadow-sm);
+}
+
+.voice-trigger-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.voice-trigger-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.voice-trigger-btn svg {
+  font-size: 16px;
+}
+
+.voice-message.compact .voice-trigger-btn {
+  padding: var(--nexus-spacing-xs) var(--nexus-spacing-sm);
+  gap: var(--nexus-spacing-xs);
+}
+
+.voice-message.compact .voice-trigger-btn svg {
+  font-size: 14px;
+}
+
+/* Message Bubble Styles (for chat integration) */
+.voice-message.sent {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.voice-message.sent .voice-message-content {
+  background: var(--nexus-primary-color);
+  color: white;
+}
+
+.voice-message.sent .voice-message-icon {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.voice-message.sent .voice-message-duration {
+  color: white;
+}
+
+.voice-message.sent .voice-message-timestamp {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.voice-message.received {
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+.voice-message.received .voice-message-content {
+  background: var(--nexus-background-color);
+  border-color: var(--nexus-border-secondary);
+}
+
+/* Loading State */
+.voice-message.loading .voice-message-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.voice-message.loading .voice-message-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Error State */
+.voice-message.error .voice-message-content {
+  background: var(--nexus-error-bg);
+  border-color: var(--nexus-error-color);
+}
+
+.voice-message.error .voice-message-icon {
+  background: var(--nexus-error-color);
+}
+
+.voice-message.error .voice-message-duration {
+  color: var(--nexus-error-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .voice-message {
+    max-width: 280px;
+  }
+  
+  .voice-message.compact {
+    max-width: 220px;
+  }
+  
+  .voice-message-content {
+    padding: var(--nexus-spacing-xs);
+  }
+  
+  .voice-message-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .voice-message.compact .voice-message-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+  
+  .voice-trigger-btn {
+    padding: var(--nexus-spacing-xs);
+    font-size: var(--nexus-font-size-xs);
+  }
+  
+  .voice-trigger-btn svg {
+    font-size: 14px;
+  }
+}
+
+/* Animation for voice message appearance */
+.voice-message {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .voice-message.sent .voice-message-content {
+    background: var(--nexus-accent-color);
+  }
+  
+  .voice-message.sent .voice-message-icon {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}

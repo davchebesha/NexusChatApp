@@ -1,0 +1,250 @@
+/* SystemMonitoring Styles */
+
+.system-monitoring {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.system-monitoring.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.monitoring-header {
+  margin-bottom: 32px;
+}
+
+.monitoring-header h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.monitoring-header p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.metrics-section {
+  margin-bottom: 32px;
+}
+
+.metrics-section h3 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.metric-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.metric-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.metric-icon {
+  font-size: 24px;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.metric-info {
+  flex: 1;
+}
+
+.metric-info h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.success {
+  background: rgba(46, 204, 113, 0.1);
+  color: var(--success-color, #2ecc71);
+}
+
+.status-badge.warning {
+  background: rgba(243, 156, 18, 0.1);
+  color: var(--warning-color, #f39c12);
+}
+
+.status-badge.error {
+  background: rgba(231, 76, 60, 0.1);
+  color: var(--error-color, #e74c3c);
+}
+
+.status-badge.normal {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-fill.success {
+  background: var(--success-color, #2ecc71);
+}
+
+.progress-fill.warning {
+  background: var(--warning-color, #f39c12);
+}
+
+.progress-fill.error {
+  background: var(--error-color, #e74c3c);
+}
+
+.metric-details {
+  margin-top: 12px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+.detail-item span:first-child {
+  color: var(--text-secondary);
+}
+
+.detail-item span:last-child {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .system-monitoring {
+    padding: 16px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .monitoring-header h2 {
+    font-size: 24px;
+  }
+
+  .metric-card {
+    padding: 16px;
+  }
+
+  .metric-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .metric-info {
+    width: 100%;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .metric-card {
+    background: var(--bg-primary, #2c3e50);
+    border-color: var(--border-color, #34495e);
+  }
+
+  .progress-bar {
+    background: var(--bg-secondary, #34495e);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .metric-card {
+    border-width: 2px;
+  }
+
+  .status-badge {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .metric-card,
+  .progress-fill {
+    transition: none;
+  }
+
+  .loading-spinner {
+    animation: none;
+  }
+}

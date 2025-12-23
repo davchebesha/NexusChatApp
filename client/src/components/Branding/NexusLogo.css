@@ -1,0 +1,146 @@
+/* Nexus Logo - Professional AI-Powered Design Styles */
+.nexus-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.nexus-logo.animated .logo-svg {
+  animation: logoFloat 6s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(1deg); }
+}
+
+/* Central Circle Animation */
+.nexus-logo.animated .central-circle {
+  animation: centralPulse 4s ease-in-out infinite;
+}
+
+@keyframes centralPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Network Connections Animation */
+.nexus-logo.animated .network-connections line,
+.nexus-logo.animated .network-connections path {
+  animation: networkFlow 3s linear infinite;
+}
+
+@keyframes networkFlow {
+  0% { stroke-dasharray: 0, 100; }
+  50% { stroke-dasharray: 50, 50; }
+  100% { stroke-dasharray: 0, 100; }
+}
+
+/* Network Nodes Animation */
+.nexus-logo.animated .network-nodes circle {
+  animation: nodesPulse 2s ease-in-out infinite;
+}
+
+.nexus-logo.animated .network-nodes circle:nth-child(1) { animation-delay: 0s; }
+.nexus-logo.animated .network-nodes circle:nth-child(2) { animation-delay: 0.2s; }
+.nexus-logo.animated .network-nodes circle:nth-child(3) { animation-delay: 0.4s; }
+.nexus-logo.animated .network-nodes circle:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes nodesPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Central Letter Animation */
+.nexus-logo.animated .central-letter {
+  animation: letterGlow 3s ease-in-out infinite;
+}
+
+@keyframes letterGlow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); }
+  50% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)); }
+}
+
+/* Pulse Ring Animation */
+.nexus-logo.animated .pulse-ring {
+  animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% { 
+    opacity: 0.6; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(1.1); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: scale(1.3); 
+  }
+}
+
+/* Feature Icons Animation */
+.nexus-logo.animated .feature-icons {
+  animation: iconsFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconsFloat {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Variants */
+.nexus-logo.icon {
+  padding: 8px;
+}
+
+.nexus-logo.minimal {
+  padding: 4px;
+}
+
+.nexus-logo.app-icon {
+  border-radius: 15%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Hover Effects */
+.nexus-logo:hover .central-circle {
+  filter: brightness(1.1);
+}
+
+.nexus-logo:hover .network-connections {
+  opacity: 0.8;
+}
+
+.nexus-logo:hover .pulse-ring {
+  animation-duration: 1s;
+}
+
+/* Responsive Sizes */
+.nexus-logo.small { transform: scale(0.7); }
+.nexus-logo.medium { transform: scale(1); }
+.nexus-logo.large { transform: scale(1.3); }
+.nexus-logo.xl { transform: scale(1.6); }
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .nexus-logo .network-connections line,
+  .nexus-logo .network-connections path {
+    stroke-opacity: 0.8;
+  }
+  
+  .nexus-logo .network-nodes circle {
+    filter: brightness(1.1);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .nexus-logo.animated * {
+    animation: none !important;
+  }
+}

@@ -21,11 +21,19 @@ const Login = () => {
     }
 
     setLoading(true);
-    const result = await login(email, password);
-    setLoading(false);
-
-    if (!result.success) {
-      toast.error(result.message);
+    try {
+      const result = await login(email, password);
+      
+      if (!result.success) {
+        toast.error(result.message);
+      } else {
+        toast.success('Login successful!');
+      }
+    } catch (error) {
+      toast.error('An error occurred during login');
+      console.error('Login error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,7 +44,8 @@ const Login = () => {
           <h1>Nexus ChatApp</h1>
           <p>Welcome back! Please sign in to your account.</p>
         </div>
-        <h2>Login</h2>
+        
+        <h2>Sign In</h2>
         
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -48,6 +57,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               disabled={loading}
               required
+              autoComplete="email"
             />
           </div>
 
@@ -60,24 +70,33 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               disabled={loading}
               required
+              autoComplete="current-password"
             />
             <button
               type="button"
               className="password-toggle"
               onClick={() => setShowPassword(!showPassword)}
+              disabled={loading}
+              aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <FiEyeOff /> : <FiEye />}
             </button>
           </div>
 
-          <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
+          <button 
+            type="submit" 
+            className="btn btn-primary btn-block login-button" 
+            disabled={loading}
+          >
+            {loading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
 
-        <p className="auth-link">
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
+        <div className="auth-footer">
+          <p className="auth-link">
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
+        </div>
       </div>
     </div>
   );

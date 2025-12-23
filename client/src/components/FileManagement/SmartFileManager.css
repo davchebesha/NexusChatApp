@@ -1,0 +1,438 @@
+/* Smart File Manager - Professional File Management Styles */
+.smart-file-manager {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-background, #ffffff);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Header */
+.file-manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color, #e4e6eb);
+  background: var(--color-surface, #f8f9fa);
+}
+
+.file-manager-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text, #333);
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--color-background, #ffffff);
+  border: 1px solid var(--border-color, #e4e6eb);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-textSecondary, #666);
+}
+
+.action-btn:hover {
+  background: var(--primary-color, #10b981);
+  color: white;
+  border-color: var(--primary-color, #10b981);
+  transform: translateY(-1px);
+}
+
+.action-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Voice Recorder Section */
+.voice-recorder-section {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color, #e4e6eb);
+  background: var(--color-surface, #f8f9fa);
+}
+
+/* Files Grid */
+.files-grid {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  align-content: start;
+}
+
+/* Empty State */
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--color-textSecondary, #666);
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text, #333);
+}
+
+.empty-state span {
+  font-size: 14px;
+  color: var(--color-textSecondary, #666);
+}
+
+/* File Item */
+.file-item {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-background, #ffffff);
+  border: 1px solid var(--border-color, #e4e6eb);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.file-item:hover {
+  border-color: var(--primary-color, #10b981);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+  transform: translateY(-2px);
+}
+
+/* File Preview */
+.file-preview {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: var(--color-surface, #f8f9fa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.file-preview img:hover {
+  transform: scale(1.05);
+}
+
+.video-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.video-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.play-overlay:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-overlay svg {
+  width: 20px;
+  height: 20px;
+}
+
+.file-icon-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--color-textSecondary, #666);
+}
+
+.file-icon-preview svg {
+  width: 48px;
+  height: 48px;
+}
+
+/* Voice Indicator */
+.voice-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.voice-indicator svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* File Info */
+.file-info {
+  padding: 12px 16px;
+  flex: 1;
+}
+
+.file-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text, #333);
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--color-textSecondary, #666);
+}
+
+.file-size {
+  font-weight: 500;
+}
+
+.file-date {
+  opacity: 0.8;
+}
+
+/* File Actions */
+.file-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 8px 12px 12px 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.file-item:hover .file-actions {
+  opacity: 1;
+}
+
+.file-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--color-surface, #f8f9fa);
+  border: 1px solid var(--border-color, #e4e6eb);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-textSecondary, #666);
+}
+
+.file-action-btn:hover {
+  background: var(--primary-color, #10b981);
+  color: white;
+  border-color: var(--primary-color, #10b981);
+  transform: translateY(-1px);
+}
+
+.file-action-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .files-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .file-manager-header {
+    padding: 12px 16px;
+  }
+
+  .file-manager-header h3 {
+    font-size: 16px;
+  }
+
+  .action-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .action-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .voice-recorder-section {
+    padding: 12px 16px;
+  }
+
+  .file-preview {
+    height: 140px;
+  }
+
+  .file-info {
+    padding: 10px 12px;
+  }
+
+  .file-actions {
+    padding: 6px 8px 10px 8px;
+    opacity: 1; /* Always show on mobile */
+  }
+
+  .file-action-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .file-action-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .files-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .file-manager-header {
+    padding: 10px 12px;
+  }
+
+  .file-preview {
+    height: 120px;
+  }
+
+  .file-info {
+    padding: 8px 10px;
+  }
+
+  .file-name {
+    font-size: 13px;
+  }
+
+  .file-meta {
+    font-size: 11px;
+  }
+
+  .empty-state {
+    padding: 40px 16px;
+  }
+
+  .empty-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .empty-state p {
+    font-size: 16px;
+  }
+
+  .empty-state span {
+    font-size: 13px;
+  }
+}
+
+/* Accessibility */
+.action-btn:focus,
+.file-action-btn:focus {
+  outline: 2px solid var(--primary-color, #10b981);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .file-item,
+  .action-btn,
+  .file-action-btn {
+    border-width: 2px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .smart-file-manager *,
+  .smart-file-manager *::before,
+  .smart-file-manager *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .smart-file-manager {
+    --color-background: #1a1a1a;
+    --color-surface: #2d2d2d;
+    --color-text: #ffffff;
+    --color-textSecondary: #a0a0a0;
+    --border-color: #404040;
+  }
+
+  .play-overlay {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .voice-indicator {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}

@@ -1,0 +1,305 @@
+/* AdminSettings Styles */
+
+.admin-settings {
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  margin-bottom: 32px;
+}
+
+.settings-header h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.settings-header p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.settings-container {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.settings-tabs {
+  display: flex;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.tab-button.active {
+  background: var(--bg-primary);
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.tab-icon {
+  font-size: 16px;
+}
+
+.settings-content {
+  padding: 32px;
+}
+
+.settings-section h3 {
+  margin: 0 0 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-group small {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-color);
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-tertiary);
+}
+
+.btn-icon {
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-settings {
+    padding: 16px;
+  }
+
+  .settings-tabs {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    justify-content: flex-start;
+    padding: 12px 16px;
+  }
+
+  .settings-content {
+    padding: 20px;
+  }
+
+  .settings-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .settings-header h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tab-button {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  .tab-button span {
+    display: none;
+  }
+
+  .tab-icon {
+    font-size: 18px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .settings-container {
+    background: var(--bg-primary, #2c3e50);
+    border-color: var(--border-color, #34495e);
+  }
+
+  .settings-tabs {
+    background: var(--bg-secondary, #34495e);
+  }
+
+  .tab-button.active {
+    background: var(--bg-primary, #2c3e50);
+  }
+
+  .form-input,
+  .form-textarea {
+    background: var(--bg-primary, #2c3e50);
+    color: var(--text-primary, #ecf0f1);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .settings-container,
+  .form-input,
+  .form-textarea {
+    border-width: 3px;
+  }
+
+  .btn {
+    border-width: 2px;
+  }
+
+  .tab-button.active {
+    border-bottom-width: 4px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .tab-button,
+  .form-input,
+  .form-textarea,
+  .btn {
+    transition: none;
+  }
+
+  .btn-primary:hover {
+    transform: none;
+  }
+}

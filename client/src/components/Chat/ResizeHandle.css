@@ -1,0 +1,189 @@
+/* Professional Telegram-Style Resize Handle */
+.resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: col-resize;
+  z-index: 300;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resize-handle.right {
+  right: -4px;
+}
+
+.resize-handle.left {
+  left: -4px;
+}
+
+/* Visual indicator line - Telegram style */
+.resize-handle-line {
+  width: 2px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 1px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+/* Hover state - Professional feedback */
+.resize-handle:hover {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.resize-handle:hover .resize-handle-line {
+  background: linear-gradient(135deg, var(--primary-color, #10b981), #059669);
+  opacity: 1;
+  height: 60px;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Active dragging state - Enhanced feedback */
+.resize-handle.dragging {
+  background-color: rgba(16, 185, 129, 0.1);
+  width: 12px;
+}
+
+.resize-handle.dragging.right {
+  right: -6px;
+}
+
+.resize-handle.dragging.left {
+  left: -6px;
+}
+
+.resize-handle.dragging .resize-handle-line {
+  background: linear-gradient(135deg, var(--primary-color, #10b981), #059669);
+  opacity: 1;
+  height: 80px;
+  width: 3px;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.5);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+/* Global cursor feedback during drag */
+body.resizing {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+body.resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+/* Mobile and tablet optimizations */
+@media (max-width: 1024px) {
+  .resize-handle {
+    width: 12px;
+  }
+  
+  .resize-handle.right {
+    right: -6px;
+  }
+  
+  .resize-handle.left {
+    left: -6px;
+  }
+  
+  .resize-handle:hover .resize-handle-line,
+  .resize-handle.dragging .resize-handle-line {
+    width: 4px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .resize-handle {
+    width: 16px;
+  }
+  
+  .resize-handle.right {
+    right: -8px;
+  }
+  
+  .resize-handle.left {
+    left: -8px;
+  }
+  
+  .resize-handle-line {
+    width: 3px;
+    height: 30px;
+  }
+  
+  .resize-handle:hover .resize-handle-line,
+  .resize-handle.dragging .resize-handle-line {
+    width: 5px;
+    height: 40px;
+  }
+}
+
+/* Accessibility - keyboard focus */
+.resize-handle:focus {
+  outline: 2px solid var(--primary-color, #10b981);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.resize-handle:focus .resize-handle-line {
+  background: var(--primary-color, #10b981);
+  opacity: 1;
+}
+
+/* Smooth transitions when not resizing */
+.sidebar-container:not(.resizing) {
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced visual feedback for different states */
+.resize-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.resize-handle:hover::before {
+  background: rgba(16, 185, 129, 0.1);
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.resize-handle.dragging::before {
+  background: rgba(16, 185, 129, 0.2);
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* Prevent text selection during resize */
+.dual-sidebar-chat-layout.resizing {
+  user-select: none;
+}
+
+.dual-sidebar-chat-layout.resizing * {
+  user-select: none;
+  pointer-events: none;
+}
+
+.dual-sidebar-chat-layout.resizing .resize-handle {
+  pointer-events: auto;
+}

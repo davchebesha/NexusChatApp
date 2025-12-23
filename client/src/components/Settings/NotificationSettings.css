@@ -1,0 +1,279 @@
+/* Notification Settings Styles */
+.notification-settings {
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  margin-bottom: 32px;
+}
+
+.settings-header h2 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.settings-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.settings-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.settings-section {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.section-icon {
+  font-size: 20px;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.section-content {
+  padding: 24px;
+}
+
+/* Toggle Switch */
+.toggle-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toggle-item:last-child {
+  border-bottom: none;
+}
+
+.toggle-info {
+  flex: 1;
+}
+
+.toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.toggle-description {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.toggle-switch {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.2s ease;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.toggle-switch.enabled {
+  color: #10b981;
+}
+
+.toggle-switch.disabled {
+  color: var(--text-disabled);
+}
+
+.toggle-switch:hover {
+  background: var(--bg-hover);
+  transform: scale(1.1);
+}
+
+/* Form Elements */
+.form-group {
+  margin: 16px 0;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.settings-select,
+.time-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.settings-select:focus,
+.time-input:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+}
+
+/* Quiet Hours Configuration */
+.quiet-hours-config {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.time-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.time-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-input-group label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Test Buttons */
+.test-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.test-btn {
+  padding: 10px 16px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.test-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.test-btn:active {
+  transform: translateY(0);
+}
+
+/* Status Indicators */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-indicator.enabled {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.status-indicator.disabled {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .notification-settings {
+    padding: 16px;
+  }
+  
+  .section-header {
+    padding: 16px 20px;
+  }
+  
+  .section-content {
+    padding: 20px;
+  }
+  
+  .toggle-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .toggle-switch {
+    align-self: flex-end;
+  }
+  
+  .time-inputs {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .test-buttons {
+    flex-direction: column;
+  }
+  
+  .test-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-header h2 {
+    font-size: 20px;
+  }
+  
+  .section-header h3 {
+    font-size: 16px;
+  }
+  
+  .toggle-label {
+    font-size: 13px;
+  }
+  
+  .toggle-description {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,291 @@
+/* Voice Recorder Styles */
+.voice-recorder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--nexus-spacing-md);
+  background: var(--nexus-background-color);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  box-shadow: var(--nexus-shadow-sm);
+  min-width: 300px;
+  max-width: 400px;
+}
+
+/* Error Display */
+.voice-recorder-error {
+  display: flex;
+  align-items: center;
+  padding: var(--nexus-spacing-sm);
+  background: var(--nexus-error-bg);
+  color: var(--nexus-error-color);
+  border-radius: var(--nexus-border-radius-sm);
+  margin-bottom: var(--nexus-spacing-md);
+  font-size: var(--nexus-font-size-sm);
+  width: 100%;
+  text-align: center;
+}
+
+/* Start Recording State */
+.voice-recorder-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nexus-spacing-sm);
+}
+
+.voice-recorder-hint {
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-secondary);
+  text-align: center;
+}
+
+/* Recording State */
+.voice-recorder-recording {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nexus-spacing-md);
+  width: 100%;
+}
+
+.recording-controls {
+  display: flex;
+  gap: var(--nexus-spacing-sm);
+  align-items: center;
+}
+
+.recording-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nexus-spacing-xs);
+}
+
+.recording-duration {
+  font-size: var(--nexus-font-size-lg);
+  font-weight: var(--nexus-font-weight-bold);
+  color: var(--nexus-primary-color);
+  font-family: 'Courier New', monospace;
+}
+
+.recording-status {
+  font-size: var(--nexus-font-size-sm);
+  color: var(--nexus-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-xs);
+}
+
+.recording-status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--nexus-error-color);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+/* Playback State */
+.voice-recorder-playback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nexus-spacing-md);
+  width: 100%;
+}
+
+.playback-controls {
+  display: flex;
+  gap: var(--nexus-spacing-sm);
+  align-items: center;
+}
+
+.playback-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playback-duration {
+  font-size: var(--nexus-font-size-lg);
+  font-weight: var(--nexus-font-weight-medium);
+  color: var(--nexus-text-color);
+  font-family: 'Courier New', monospace;
+}
+
+/* Voice Recorder Buttons */
+.voice-recorder-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: var(--nexus-border-radius-full);
+  cursor: pointer;
+  transition: all var(--nexus-transition-fast);
+  font-size: 20px;
+  box-shadow: var(--nexus-shadow-sm);
+}
+
+.voice-recorder-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--nexus-shadow-md);
+}
+
+.voice-recorder-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--nexus-shadow-sm);
+}
+
+.voice-recorder-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--nexus-shadow-sm);
+}
+
+/* Button Variants */
+.record-btn {
+  background: var(--nexus-error-color);
+  color: white;
+  width: 64px;
+  height: 64px;
+  font-size: 24px;
+}
+
+.record-btn:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.stop-btn {
+  background: var(--nexus-error-color);
+  color: white;
+}
+
+.stop-btn:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.pause-btn {
+  background: var(--nexus-warning-color);
+  color: white;
+}
+
+.pause-btn:hover:not(:disabled) {
+  background: #d97706;
+}
+
+.play-btn {
+  background: var(--nexus-success-color);
+  color: white;
+}
+
+.play-btn:hover:not(:disabled) {
+  background: #059669;
+}
+
+.cancel-btn {
+  background: var(--nexus-text-secondary);
+  color: white;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background: #475569;
+}
+
+.send-btn {
+  background: var(--nexus-primary-color);
+  color: white;
+}
+
+.send-btn:hover:not(:disabled) {
+  background: var(--nexus-secondary-color);
+}
+
+/* Waveform Visualization */
+.waveform-container {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nexus-background-secondary);
+  border-radius: var(--nexus-border-radius-sm);
+  padding: var(--nexus-spacing-sm);
+  overflow: hidden;
+}
+
+.waveform {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  height: 100%;
+  gap: 2px;
+  min-width: 200px;
+}
+
+.waveform-bar {
+  width: 3px;
+  background: var(--nexus-primary-color);
+  border-radius: 2px;
+  min-height: 2px;
+  transition: height var(--nexus-transition-fast);
+}
+
+.waveform.static .waveform-bar {
+  background: var(--nexus-text-secondary);
+  opacity: 0.7;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .voice-recorder {
+    min-width: 280px;
+    max-width: 320px;
+    padding: var(--nexus-spacing-sm);
+  }
+  
+  .voice-recorder-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+  
+  .record-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+  
+  .waveform-container {
+    height: 50px;
+  }
+  
+  .recording-controls,
+  .playback-controls {
+    gap: var(--nexus-spacing-xs);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .waveform-bar {
+    background: var(--nexus-accent-color);
+  }
+  
+  .waveform.static .waveform-bar {
+    background: var(--nexus-text-muted);
+  }
+}

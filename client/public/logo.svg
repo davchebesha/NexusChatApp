@@ -1,30 +1,62 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Nexus ChatApp logo">
   <defs>
-    <linearGradient id="faviconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#667eea" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#764ba2" stop-opacity="1"/>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b71c1c"/>
+      <stop offset="50%" stop-color="#e53935"/>
+      <stop offset="100%" stop-color="#ff5252"/>
     </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
   </defs>
-  
-  <!-- Main Circle Background -->
-  <circle cx="16" cy="16" r="15" fill="url(#faviconGradient)"/>
-  
-  <!-- Letter "N" -->
-  <path d="M8 10 L8 22 L10 22 L10 14 L14 22 L16 22 L16 10 L14 10 L14 18 L10 10 Z" 
-        fill="white" 
-        stroke="white" 
-        stroke-width="0.25"/>
-  
-  <!-- Letter "C" -->
-  <path d="M20 10 C22 10 24 12 24 16 C24 20 22 22 20 22 C19 22 18 21.5 17.5 20.5 L18.5 19.5 C18.75 20 19.25 20.5 20 20.5 C21 20.5 22.5 19 22.5 16 C22.5 13 21 11.5 20 11.5 C19.25 11.5 18.75 12 18.5 12.5 L17.5 11.5 C18 10.5 19 10 20 10 Z" 
-        fill="white" 
-        stroke="white" 
-        stroke-width="0.25"/>
-  
-  <!-- Connection Line between N and C -->
-  <line x1="16" y1="16" x2="17.5" y2="16" stroke="white" stroke-width="1" opacity="0.6"/>
-  
-  <!-- Small decorative dots -->
-  <circle cx="16" cy="8" r="0.75" fill="white" opacity="0.8"/>
-  <circle cx="16" cy="24" r="0.75" fill="white" opacity="0.8"/>
+
+  <!-- Outer circular core with soft shadow (semi-3D feel) -->
+  <g filter="url(#softShadow)">
+    <circle cx="512" cy="512" r="420" fill="url(#redGrad)" />
+  </g>
+
+  <!-- Subtle radial highlight for semi-3D effect -->
+  <ellipse cx="430" cy="420" rx="240" ry="90" fill="rgba(255,255,255,0.06)" />
+
+  <!-- Network nodes + connecting lines (distributed system) -->
+  <g fill="#fff" opacity="0.92">
+    <line x1="512" y1="512" x2="740" y2="360" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.18"/>
+    <line x1="512" y1="512" x2="300" y2="360" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.18"/>
+    <line x1="512" y1="512" x2="620" y2="720" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.18"/>
+
+    <circle cx="740" cy="360" r="18" />
+    <circle cx="300" cy="360" r="18" />
+    <circle cx="620" cy="720" r="18" />
+    <circle cx="450" cy="240" r="12" />
+    <circle cx="820" cy="520" r="12" />
+  </g>
+
+  <!-- Minimal feature icons integrated into network (stylized, small) -->
+  <g fill="#fff" opacity="0.98">
+    <!-- chat bubble (left) -->
+    <path d="M260 380h110c20 0 36 16 36 36v58c0 20-16 36-36 36H318l-68 36V452c-20 0-36-16-36-36v-36c0-20 16-36 36-36z" opacity="0.9" />
+    <!-- microphone (top) -->
+    <path d="M470 170h84v120a42 42 0 1 1-84 0V170zM515 354v30" stroke="#fff" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.95" />
+    <!-- video (right) -->
+    <path d="M700 420h110v72H700z" opacity="0.95" />
+    <path d="M810 468l48-28v128l-48-28z" opacity="0.95" />
+    <!-- cloud (bottom-right) -->
+    <path d="M600 760c-24-72 40-120 100-96 12-36 56-56 96-40 44 18 56 78 18 118H600z" opacity="0.9" />
+    <!-- file (bottom-left) -->
+    <path d="M280 700h84v-120l60-60v-84h-144v264z" opacity="0.95" />
+  </g>
+
+  <!-- Bold futuristic 'N' centered -->
+  <g fill="#fff">
+    <path d="M360 700 L360 320 L460 320 L640 640 L640 320 L740 320 L740 700 L640 700 L460 380 L460 700 Z"/>
+  </g>
+
+  <!-- Circular trim and subtle node connectors for balance -->
+  <g stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.06">
+    <path d="M220 512 C260 360, 360 260, 512 220" fill="none" />
+    <path d="M804 512 C764 660, 664 760, 512 800" fill="none" />
+  </g>
+
+  <!-- Accessibility: small title for SVGs that may be used as favicon -->
+  <title>NEXUS CHAT APP logo</title>
 </svg>

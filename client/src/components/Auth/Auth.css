@@ -3,18 +3,33 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: var(--app-background, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+  background: var(--nexus-background-professional);
   padding: 20px;
+  position: relative;
+}
+
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  opacity: 0.3;
 }
 
 .auth-card {
-  background: var(--color-surface, white);
+  background: rgba(255, 255, 255, 0.95);
   padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(45, 55, 72, 0.2);
   width: 100%;
   max-width: 400px;
-  border: 1px solid var(--color-border, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
 }
 
 .auth-header {
@@ -23,21 +38,24 @@
 }
 
 .auth-header h1 {
-  color: var(--color-primary, #667eea);
+  background: var(--nexus-background-professional);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 10px;
   font-size: 32px;
   font-weight: 700;
 }
 
 .auth-header p {
-  color: var(--color-textSecondary, #666);
+  color: #64748b;
   font-size: 14px;
   margin: 0;
 }
 
 .auth-card h2 {
   text-align: center;
-  color: var(--color-text, #333);
+  color: #1e293b;
   margin-bottom: 30px;
   font-size: 24px;
   font-weight: 500;
@@ -60,15 +78,16 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--color-textSecondary, #666);
+  color: #64748b;
   padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.2s ease;
 }
 
 .password-toggle:hover {
-  color: var(--color-text, #333);
+  color: var(--nexus-primary-color);
 }
 
 .password-toggle svg {
@@ -78,14 +97,14 @@
 
 .input {
   padding: 12px 16px;
-  border: 2px solid var(--color-border, #e1e5e9);
+  border: 2px solid #e2e8f0;
   border-radius: 8px;
   font-size: 14px;
   width: 100%;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
-  background: var(--color-background, white);
-  color: var(--color-text, #333);
+  transition: all 0.3s ease;
+  background: white;
+  color: #1e293b;
 }
 
 .password-group .input {
@@ -94,12 +113,14 @@
 
 .input:focus {
   outline: none;
-  border-color: var(--color-primary, #667eea);
+  border-color: var(--nexus-primary-color);
+  box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
 }
 
 .input:disabled {
-  background-color: var(--color-surface, #f5f5f5);
+  background-color: #f8fafc;
   cursor: not-allowed;
+  color: #94a3b8;
 }
 
 .btn-block {
@@ -108,21 +129,67 @@
   padding: 12px;
   font-size: 16px;
   font-weight: 600;
+  background: var(--nexus-primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(45, 55, 72, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.btn-block:hover:not(:disabled) {
+  background: var(--nexus-secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 55, 72, 0.4);
+}
+
+.btn-block:active {
+  transform: translateY(0);
+}
+
+.btn-block:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-button {
+  background: var(--nexus-primary-color) !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  user-select: none;
+}
+
+.login-button:hover:not(:disabled) {
+  background: var(--nexus-secondary-color) !important;
+}
+
+.login-button:disabled {
+  background: var(--nexus-primary-color) !important;
+  opacity: 0.7;
+  cursor: not-allowed !important;
 }
 
 .auth-link {
   text-align: center;
   margin-top: 20px;
-  color: var(--color-textSecondary, #666);
+  color: #64748b;
 }
 
 .auth-link a {
-  color: var(--color-primary, #667eea);
+  color: var(--nexus-primary-color);
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .auth-link a:hover {
+  color: var(--nexus-secondary-color);
   text-decoration: underline;
 }
 

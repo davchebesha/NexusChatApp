@@ -1,0 +1,365 @@
+/* Media Player Styles */
+.media-player {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-sm);
+  padding: var(--nexus-spacing-sm);
+  background: var(--nexus-background-color);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  box-shadow: var(--nexus-shadow-sm);
+  min-width: 300px;
+  font-family: var(--nexus-font-family);
+}
+
+.media-player.compact {
+  min-width: 200px;
+  padding: var(--nexus-spacing-xs);
+  gap: var(--nexus-spacing-xs);
+}
+
+.media-player.error {
+  justify-content: center;
+  background: var(--nexus-error-bg);
+  border-color: var(--nexus-error-color);
+}
+
+.error-message {
+  color: var(--nexus-error-color);
+  font-size: var(--nexus-font-size-sm);
+  font-weight: var(--nexus-font-weight-medium);
+}
+
+/* Media Controls */
+.media-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-xs);
+  flex-shrink: 0;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--nexus-border-radius-full);
+  background: var(--nexus-background-secondary);
+  color: var(--nexus-text-color);
+  cursor: pointer;
+  transition: all var(--nexus-transition-fast);
+  font-size: 16px;
+}
+
+.control-btn:hover {
+  background: var(--nexus-background-tertiary);
+  transform: translateY(-1px);
+  box-shadow: var(--nexus-shadow-sm);
+}
+
+.control-btn:active {
+  transform: translateY(0);
+}
+
+.play-btn {
+  width: 40px;
+  height: 40px;
+  background: var(--nexus-primary-color);
+  color: white;
+  font-size: 18px;
+}
+
+.play-btn:hover {
+  background: var(--nexus-secondary-color);
+}
+
+.skip-btn {
+  font-size: 14px;
+}
+
+.volume-btn {
+  position: relative;
+}
+
+/* Progress Section */
+.media-progress-section {
+  display: flex;
+  align-items: center;
+  gap: var(--nexus-spacing-sm);
+  flex: 1;
+  min-width: 0;
+}
+
+.time-display {
+  font-size: var(--nexus-font-size-sm);
+  font-weight: var(--nexus-font-weight-medium);
+  color: var(--nexus-text-secondary);
+  font-family: 'Courier New', monospace;
+  flex-shrink: 0;
+  min-width: 35px;
+}
+
+.time-display.current {
+  color: var(--nexus-primary-color);
+}
+
+/* Progress Container */
+.progress-container {
+  flex: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Traditional Progress Bar */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--nexus-background-tertiary);
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.progress-buffered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--nexus-border-secondary);
+  border-radius: 3px;
+  transition: width var(--nexus-transition-fast);
+}
+
+.progress-played {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--nexus-primary-color);
+  border-radius: 3px;
+  transition: width var(--nexus-transition-fast);
+}
+
+.progress-thumb {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--nexus-primary-color);
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--nexus-shadow-sm);
+  opacity: 0;
+  transition: opacity var(--nexus-transition-fast);
+}
+
+.progress-bar:hover .progress-thumb {
+  opacity: 1;
+}
+
+/* Waveform Visualization */
+.media-player-waveform {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  height: 32px;
+  gap: 1px;
+  width: 100%;
+  cursor: pointer;
+  padding: var(--nexus-spacing-xs) 0;
+}
+
+.media-player-waveform .waveform-bar {
+  width: 2px;
+  background: var(--nexus-border-secondary);
+  border-radius: 1px;
+  min-height: 2px;
+  transition: all var(--nexus-transition-fast);
+}
+
+.media-player-waveform .waveform-bar.played {
+  background: var(--nexus-primary-color);
+}
+
+.media-player-waveform .waveform-bar:hover {
+  background: var(--nexus-accent-color);
+}
+
+/* Volume Controls */
+.volume-controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.volume-slider-container {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--nexus-background-color);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius);
+  padding: var(--nexus-spacing-sm);
+  box-shadow: var(--nexus-shadow-md);
+  z-index: var(--nexus-z-popover);
+  margin-bottom: var(--nexus-spacing-xs);
+}
+
+.volume-slider-container::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--nexus-background-color);
+}
+
+.volume-slider {
+  width: 80px;
+  height: 4px;
+  background: var(--nexus-background-tertiary);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--nexus-primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--nexus-shadow-sm);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--nexus-primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--nexus-shadow-sm);
+}
+
+/* Playback Rate Controls */
+.playback-rate-controls {
+  flex-shrink: 0;
+}
+
+.playback-rate-select {
+  padding: var(--nexus-spacing-xs);
+  border: 1px solid var(--nexus-border-color);
+  border-radius: var(--nexus-border-radius-sm);
+  background: var(--nexus-background-color);
+  color: var(--nexus-text-color);
+  font-size: var(--nexus-font-size-xs);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--nexus-transition-fast);
+}
+
+.playback-rate-select:focus {
+  border-color: var(--nexus-primary-color);
+}
+
+.playback-rate-select:hover {
+  border-color: var(--nexus-border-secondary);
+}
+
+/* Compact Mode Adjustments */
+.media-player.compact .control-btn {
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+}
+
+.media-player.compact .play-btn {
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+}
+
+.media-player.compact .media-player-waveform {
+  height: 24px;
+}
+
+.media-player.compact .progress-bar {
+  height: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .media-player {
+    min-width: 250px;
+    gap: var(--nexus-spacing-xs);
+  }
+  
+  .media-player.compact {
+    min-width: 180px;
+  }
+  
+  .control-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .play-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .time-display {
+    font-size: var(--nexus-font-size-xs);
+    min-width: 30px;
+  }
+  
+  .media-progress-section {
+    gap: var(--nexus-spacing-xs);
+  }
+  
+  .volume-slider {
+    width: 60px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .media-player-waveform .waveform-bar {
+    background: var(--nexus-text-muted);
+  }
+  
+  .media-player-waveform .waveform-bar.played {
+    background: var(--nexus-accent-color);
+  }
+  
+  .progress-played {
+    background: var(--nexus-accent-color);
+  }
+  
+  .progress-thumb {
+    background: var(--nexus-accent-color);
+  }
+  
+  .volume-slider::-webkit-slider-thumb {
+    background: var(--nexus-accent-color);
+  }
+  
+  .volume-slider::-moz-range-thumb {
+    background: var(--nexus-accent-color);
+  }
+}
